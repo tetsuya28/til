@@ -1,2 +1,3 @@
 .venv/*
 MySQL/docker/data/*
+Python3/jupyter/.ipynb_checkpoints/*
