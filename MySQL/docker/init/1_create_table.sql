@@ -1,1 +1,1 @@
-create table pocket2slack.article(id int not null primary key auto_increment,article_id int not null unique, article_url text not null, article_title char(255) not null)
+create table pocket2slack.article(id int not null primary key auto_increment,article_id bigint not null unique, article_url text not null, article_title char(255) not null)
