@@ -2,7 +2,7 @@
 Description=Twitter Neo4j
 
 [Service]
-ExecStart=/home/root/til/Neo4j/get_twitter_user_data_to_neo4j.py
+ExecStart=/root/til/Neo4j/get_twitter_user_data_to_neo4j.py
 Restart=on-failure
 Type=simple
 user=root
