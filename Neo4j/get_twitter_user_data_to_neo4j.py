@@ -181,5 +181,5 @@ def main(current_id=1):
 
         data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
 
-
-main()
+if __name__ == "__main__":
+    main()
