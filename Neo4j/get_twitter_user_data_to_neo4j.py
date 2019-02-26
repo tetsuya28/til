@@ -187,11 +187,11 @@ def main(from_point=False, current_user_id=1, current_id=0):
         else:
             from_point = False
 
-        current_id = target_user.get('id', False)
-
-        if current_id is False:
+        if target_user is None:
             post_message_slack('探索終了。')
             break
+        else:
+            current_id = target_user['id']
 
         data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
 
