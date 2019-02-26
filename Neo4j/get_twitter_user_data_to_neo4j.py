@@ -69,7 +69,7 @@ def insert_friendship_data_neo4j(user_id, friend_id):
 
 
 def insert_user_data(user_info):
-    ins = 'INSERT INTO user (user_id, name, screen_name, location, description, followers_count, friends_count, favourites_count, profile_background_image_url_https, profile_image_url_https) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)''
+    ins = 'INSERT INTO user (user_id, name, screen_name, location, description, followers_count, friends_count, favourites_count, profile_background_image_url_https, profile_image_url_https) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
     try:
         engine.execute(ins, user_info['id'], user_info['name'], user_info['screen_name'], user_info['location'],
                        user_info['description'], user_info['followers_count'], user_info['friends_count'],
