@@ -10,3 +10,4 @@ git config --global commit.template .gitmessage_with_emoji.txt
 
 #### 参考サイト
 * [Emojiで楽しく綺麗なコミットを手に入れる](https://goodpatch.com/blog/beautiful-commits-with-emojis/)
+* [Emoji Cheat Sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)

@@ -21,6 +21,10 @@
 # 🐛 バグ修正 :bug:
 # 🔖 バージョンアップ :bookmark:
 # 🎉 イニシャルコミット :tada:
+# 💔 :broken_heart:
+# 💤 WIP :zzz:
+# 📖 README更新 :book:
+# 🔴 バグあり :red_circle:
 
 # ==== Messages ====
 # 新規(ファイル)機能追加 Add
