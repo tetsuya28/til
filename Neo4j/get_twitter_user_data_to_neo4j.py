@@ -170,7 +170,7 @@ def main(current_id=1):
         insert_user_data_neo4j(my_twitter_account)
     else:
         print('自分は存在する')
-        data_collection(me['user_id'])
+        data_collection(user_id=me['user_id'], user_name=me['name'])
 
     while True:
         target_user = engine.execute(
