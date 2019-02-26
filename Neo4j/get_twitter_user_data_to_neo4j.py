@@ -2,6 +2,7 @@ import os
 import requests
 import time
 import json
+import sys
 from dotenv import load_dotenv
 from requests_oauthlib import OAuth1Session
 from sqlalchemy import create_engine
@@ -157,6 +158,7 @@ def data_collection(user_name, user_id=my_twitter_user_id):
     engine.execute('insert into checked_users(user_id) values({})'.format(user_id))
     post_message_slack('{}の作業終了'.format(user_id))
     print('Finish')
+    return user_id
 
 
 def main(current_id=1):
@@ -172,7 +174,7 @@ def main(current_id=1):
         print('自分は存在する')
         data_collection(user_id=me['user_id'], user_name=me['name'])
 
-    while True:
+    while current_id:
         target_user = engine.execute(
             "select * from user where description LIKE '%s' and id > %s" % ('%%' + os.environ['SEARCH_WORD'] + '%%', current_id)).first()
 
@@ -180,7 +182,9 @@ def main(current_id=1):
             post_message_slack('探索終了。奇跡。')
             break
 
-        data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
+        current_id = data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
+
 
 if __name__ == "__main__":
-    main()
+    args = sys.argv
+    main(args[1])
