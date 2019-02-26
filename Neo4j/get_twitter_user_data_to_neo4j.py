@@ -161,30 +161,41 @@ def data_collection(user_name, user_id=my_twitter_user_id):
     return user_id
 
 
-def main(current_id=1):
+def main(from_point=False, current_user_id=1, current_id=0):
     # DBの中身確認
-    me = engine.execute('select * from user where name="' + os.environ['MY_TWITTER_NAME'] + '"').first()
-    if me is None:
-        print('最初に自分の取得')
-        my_twitter_account = get_user_profile()
-        print(my_twitter_account)
-        insert_user_data(my_twitter_account)
-        insert_user_data_neo4j(my_twitter_account)
+    # ターゲットユーザが指定されてない場合のみ自分検索実行
+    if not from_point:
+        me = engine.execute('select * from user where name="' + os.environ['MY_TWITTER_NAME'] + '"').first()
+        if me is None:
+            print('最初に自分の取得')
+            my_twitter_account = get_user_profile()
+            print(my_twitter_account)
+            insert_user_data(my_twitter_account)
+            insert_user_data_neo4j(my_twitter_account)
+        else:
+            print('自分は存在する')
     else:
-        print('自分は存在する')
-        data_collection(user_id=me['user_id'], user_name=me['name'])
+        # current_user_idに指定されてる時はそのユーザを探す
+        target_user = engine.execute('select * from user where user_id = {}'.format(current_user_id)).first()
 
-    while current_id:
-        target_user = engine.execute(
-            "select * from user where description LIKE '%s' and id > %s" % ('%%' + os.environ['SEARCH_WORD'] + '%%', current_id)).first()
+    while True:
+        # 途中からじゃない場合のみ
+        if not from_point:
+            target_user = engine.execute(
+                "select * from user where description LIKE '%s' and id > %s" %
+                ('%%' + os.environ['SEARCH_WORD'] + '%%', current_id)).first()
+        else:
+            from_point = False
 
-        if target_user is None:
-            post_message_slack('探索終了。奇跡。')
+        current_id = target_user.get('id', False)
+
+        if current_id is False:
+            post_message_slack('探索終了。')
             break
 
-        current_id = data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
+        data_collection(user_id=target_user['user_id'], user_name=target_user['name'])
 
 
 if __name__ == "__main__":
     args = sys.argv
-    main(args[1])
+    main(from_point=True, current_user_id=args[1])
