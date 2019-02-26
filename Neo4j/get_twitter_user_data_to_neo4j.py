@@ -137,7 +137,7 @@ def get_friends_info(user_id, cursor=-1, users=[]):
     return users_info, cursor
 
 
-def data_collection(user_id=my_twitter_user_id, user_name):
+def data_collection(user_name, user_id=my_twitter_user_id):
     post_message_slack('{}({})の作業開始'.format(user_name, user_id))
     # チェック済みのユーザか判定
     r = engine.execute('select * from checked_users where user_id = {}'.format(user_id)).first()
