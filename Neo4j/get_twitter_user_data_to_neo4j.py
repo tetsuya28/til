@@ -113,7 +113,7 @@ def get_friends_info(user_id, cursor=-1, users=[]):
             post_message_slack(e.args)
 
         if not 'users' in response.json() or not 'next_cursor' in response.json():
-            post_message_slack(slack_incoming_webhook, response.json())
+            post_message_slack(response.json())
             print('Error')
             print(response.json())
             return False, False
