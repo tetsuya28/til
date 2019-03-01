@@ -111,10 +111,10 @@ def get_friends_info(user_id, cursor=-1, users=[]):
             response = twitter.get(twitter_user_friend_url, params=params)
         except Exception as e:
             print('Error')
-            post_message_slack(e.args)
+            post_message_slack(str(e.args))
 
         if not 'users' in response.json() or not 'next_cursor' in response.json():
-            post_message_slack(response.json())
+            post_message_slack(str(response.json()))
             print('Error')
             print(response.json())
             return False, False
@@ -141,6 +141,7 @@ def get_friends_info(user_id, cursor=-1, users=[]):
 
 def data_collection(user_name, user_id=my_twitter_user_id):
     post_message_slack('{}({})の作業開始'.format(user_name, user_id))
+    print('{}({})の作業開始'.format(user_name, user_id))
     # チェック済みのユーザか判定
     r = engine.execute('select * from checked_users where user_id = {}'.format(user_id)).first()
     if r is not None:
@@ -156,7 +157,6 @@ def data_collection(user_name, user_id=my_twitter_user_id):
         time.sleep(60)
 
     engine.execute('insert into checked_users(user_id) values({})'.format(user_id))
-    post_message_slack('{}の作業終了'.format(user_id))
     print('Finish')
     return user_id
 
