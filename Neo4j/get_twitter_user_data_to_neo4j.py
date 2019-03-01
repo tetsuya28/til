@@ -189,6 +189,8 @@ def main(from_point=False, current_user_id=1, current_id=0):
             print('TargetUser取得済み')
             from_point = False
 
+        print('TargetUser')
+        print(target_user)
         if target_user is None:
             post_message_slack('探索終了。')
             break
