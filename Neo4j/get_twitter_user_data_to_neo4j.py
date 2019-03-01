@@ -185,7 +185,7 @@ def main(from_point=False, current_user_id=1, current_id=0):
             # target_user = engine.execute(
             #     "select * from user where description LIKE '%s' and id > %s" %
             #     ('%%' + os.environ['SEARCH_WORD'] + '%%', current_id)).first()
-            target_user = engine.execute('select * from user where friends_count <= 2000 and id > {}'.format(current_id)).first()
+            target_user = engine.execute('select * from user where followers_count <= 2000 and id > {}'.format(current_id)).first()
         else:
             print('TargetUser取得済み')
             from_point = False
