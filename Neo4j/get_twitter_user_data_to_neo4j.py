@@ -181,10 +181,12 @@ def main(from_point=False, current_user_id=1, current_id=0):
     while True:
         # 途中からじゃない場合のみ
         if not from_point:
+            print('TargetUserを探しに行く')
             target_user = engine.execute(
                 "select * from user where description LIKE '%s' and id > %s" %
                 ('%%' + os.environ['SEARCH_WORD'] + '%%', current_id)).first()
         else:
+            print('TargetUser取得済み')
             from_point = False
 
         if target_user is None:
