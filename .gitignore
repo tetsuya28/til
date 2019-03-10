@@ -10,3 +10,4 @@ Neo4j/jupyter/.env
 Neo4j/.env
 
 Posgre/docker/.env
+Posgre/docker/db/*
