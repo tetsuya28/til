@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  db:
+    container_name: posgre_container
+    image: posgre:1.0.0
+    build: ./docker/db
+    ports:
+      - 5432:5432
+    volumes:
+      # 永続化するときにマウントするdir
+      - ./docker/db/posgre_data:/var/lib/postgresql/data
+      - ./docker/db/conf:/docker-entrypoint-initdb.d
+    env_file:
+      - ./docker/db/.env

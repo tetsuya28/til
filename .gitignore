@@ -8,3 +8,5 @@ Neo4j/docker/neo4j/logs/*
 Neo4j/jupyter/.ipynb_checkpoints/*
 Neo4j/jupyter/.env
 Neo4j/.env
+
+Posgre/docker/.env
