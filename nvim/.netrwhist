@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/tetsuya/.config/nvim'
+let g:netrw_dirhist_2='/Users/tetsuya/.config/nvim/dein'
+let g:netrw_dirhist_3='/Users/tetsuya/.config/nvim/dein/toml'
