@@ -16,7 +16,7 @@ sudo chsh -s `which zsh` `whoami`
 git clone https://github.com/riywo/anyenv ~/.anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
-anyenv install --init -y
+echo y | anyenv install --init
 anyenv install pyenv
 source ~/.zshrc
 pyenv install 3.6.0
