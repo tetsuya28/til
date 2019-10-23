@@ -31,7 +31,7 @@ wget -O ~/.zsh.d/power-shell.zsh https://gist.githubusercontent.com/yakult1995/3
 # Install git-foresta
 mkdir ~/bin
 curl -L https://github.com/takaaki-kasai/git-foresta/raw/master/git-foresta -o ~/bin/git-foresta && chmod +x ~/bin/git-foresta
-source ~/.zshrc
+source ~/.zshrc 2> /dev/null
 
 # Download .vimrc
 wget -O ~/.vimrc https://gist.githubusercontent.com/yakult1995/c7b76de04148532297a4f938316a0d55/raw/5995af99156abfe91a7ec8d9eda8c63b72736ff9/vimrc
