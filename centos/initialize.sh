@@ -1,5 +1,5 @@
 # Init
-sudo yum update -y && sudo yum install -y git vim zsh wget zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+sudo yum update -y && sudo yum install -y git vim zsh wget zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils util-linux-user
 
 # Install for Python
 sudo yum install -y gcc openssl-devel bzip2-devel libffi-devel
@@ -9,7 +9,7 @@ wget -O ~/.zshrc https://gist.githubusercontent.com/yakult1995/a03eb69b2297a2a7c
 mkdir ~/.zsh.d
 wget -O ~/.zsh.d/languages.zsh https://gist.githubusercontent.com/yakult1995/d136560dc027d14e6a473747b46ce3c1/raw/4ce71c5eece8c9c7f02ef1a4ef9aaea6e4b0c673/languages.zsh
 wget -O ~/.zsh.d/alias.zsh https://gist.githubusercontent.com/yakult1995/9913e4c9df68e27e62e464881a1837ad/raw/0f1df6b36f92097a6a9056d3d56907eabd7ee9f7/alias.zsh
-sudo sh -c "`which zsh` > /etc/shells"
+sudo sh -c "echo `which zsh` > /etc/shells"
 sudo chsh -s `which zsh` `whoami`
 
 # Install envs
