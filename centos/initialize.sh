@@ -18,10 +18,10 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 echo y | anyenv install --init
 anyenv install pyenv
-source ~/.zshrc 2> /dev/null
+source ~/.zshrc > /dev/null 2>&1
 pyenv install 3.6.0
 pyenv global 3.6.0
-source ~/.zshrc 2> /dev/null
+source ~/.zshrc > /dev/null 2>&1
 
 
 # Install power-shell
@@ -31,7 +31,7 @@ wget -O ~/.zsh.d/power-shell.zsh https://gist.githubusercontent.com/yakult1995/3
 # Install git-foresta
 mkdir ~/bin
 curl -L https://github.com/takaaki-kasai/git-foresta/raw/master/git-foresta -o ~/bin/git-foresta && chmod +x ~/bin/git-foresta
-source ~/.zshrc 2> /dev/null
+source ~/.zshrc > /dev/null 2>&1
 
 # Download .vimrc
 wget -O ~/.vimrc https://gist.githubusercontent.com/yakult1995/c7b76de04148532297a4f938316a0d55/raw/5995af99156abfe91a7ec8d9eda8c63b72736ff9/vimrc
