@@ -18,11 +18,11 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 echo y | anyenv install --init
 anyenv install pyenv
-source ~/.zshrc
+source ~/.zshrc 2> /dev/null
 pyenv install 3.6.0
-pyenv versions
 pyenv global 3.6.0
-source ~/.zshrc
+source ~/.zshrc 2> /dev/null
+
 
 # Install power-shell
 pip install --user powerline-shell
