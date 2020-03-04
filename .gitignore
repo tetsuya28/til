@@ -11,3 +11,6 @@ Neo4j/.env
 
 Posgre/docker/.env
 Posgre/docker/db/*
+
+node_modules/
+.next
